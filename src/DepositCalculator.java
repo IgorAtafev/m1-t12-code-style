@@ -4,20 +4,20 @@ public class DepositCalculator {
     private static final int DEPOSIT_WITHOUT_CAPITALIZATION = 1;
     private static final int DEPOSIT_WITH_CAPITALIZATION = 2;
 
-    double calculateComplexPercent(double amount, double percent, int period) {
+    private double calculateComplexPercent(double amount, double percent, int period) {
         return roundValue(amount * Math.pow((1 + percent / 12), 12 * period), 2);
     }
 
-    double calculateSimplePercent(double amount, double yearRate, int period) {
+    private double calculateSimplePercent(double amount, double yearRate, int period) {
         return roundValue(amount + amount * yearRate * period, 2);
     }
 
-    double roundValue(double value, int degree) {
+    private double roundValue(double value, int degree) {
         double scale = Math.pow(10, degree);
         return Math.round(value * scale) / scale;
     }
 
-    void calculateDepositPerPeriod() {
+    public void calculateDepositPerPeriod() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Введите сумму вклада в рублях:");
         int initialAmount = scanner.nextInt();
